@@ -50,6 +50,7 @@ textarea {
   .jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
+    text-align:center;
   }
   .container .jumbotron {
     padding-right: 60px;
