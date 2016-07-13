@@ -25,10 +25,39 @@ textarea {
 }
 
 .jumbotron {
-  padding: 1px;
-  margin-bottom: 1px;
-  font-size: 21px;
-  font-weight: 200;
-  line-height: 2.1428571435;
-  color: inherit;
-  background-color: lightgray;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+    color: inherit;
+    background-color: lightgray;
+}
+
+.jumbotron_for_forms {
+    padding: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    font-weight: 200;
+    line-height: 3.1428571435;
+    color: inherit;
+    background-color: white;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .container .jumbotron {
+    padding-right: 60px;
+    padding-left: 60px;
+    text-align:center;
+  }
+  .jumbotron h1 {
+    font-size: 63px;
+    text-align: center;
+  }
+}

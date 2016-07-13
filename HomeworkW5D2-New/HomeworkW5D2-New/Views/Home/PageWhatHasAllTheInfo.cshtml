@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<ArtistTable>
 @{
     ViewBag.Title = "THE STUFF PAGE";
+    
     //List<string> artistFirstList = new List<string>();
 }
 <h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
+
 
 <H3>Here's some stuff:</H3><br />
 
-<p>A list of the top ten artists:</p>
-@*@for(int i = 0; i > 11; i++)
-{
-    artistFirstList.Add();
 
-}*@
+<p>a list of all of the artists</p>
 @foreach(var artist in Model)
 {
     <p>@artist.ArtistName</p>

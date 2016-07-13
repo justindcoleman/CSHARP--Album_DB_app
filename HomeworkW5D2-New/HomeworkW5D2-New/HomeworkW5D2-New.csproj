@@ -228,8 +228,8 @@
     <Content Include="Views\GenreTables\Details.cshtml" />
     <Content Include="Views\GenreTables\Edit.cshtml" />
     <Content Include="Views\GenreTables\Index.cshtml" />
-    <Content Include="Views\Home\Artists.cshtml" />
-    <Content Include="Views\Home\Genres.cshtml" />
+    <Content Include="Views\Home\PWHATI2.cshtml" />
+    <Content Include="Views\Home\forms.cshtml" />
     <Content Include="Views\Home\PageWhatHasAllTheInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>

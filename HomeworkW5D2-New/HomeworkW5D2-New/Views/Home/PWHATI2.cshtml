@@ -1,0 +1,16 @@
+﻿@model IEnumerable<AlbumTable>
+@{
+    ViewBag.Title = "THE SECOND STUFF PAGE";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<H3>Here's five albums:</H3><br />
+
+
+<p>the albums and their ids:</p>
+@for (int i = 0; i < Model.Count(); i++)
+{
+    var aVar = Model;
+    <p>Album Name: @aVar.ToList()[i].AlbumName | Album ID: @aVar.ToList()[i].AlbumID</p>
+}

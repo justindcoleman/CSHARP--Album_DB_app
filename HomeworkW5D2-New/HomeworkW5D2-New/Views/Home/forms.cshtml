@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "FORMMMMMS";
+}
+
+
+@{
+    var result = "";
+    string text = "";
+
+    if (IsPost)
+    {
+        text = Request["textBox"];
+    }
+}
+
+<form method="post" action="">
+    <br />
+    <br />
+    <input type="submit" name="submittalBox" value="???" />
+    <input type="text" name="textBox" value="" />
+    <p>@result</p>
+    <hr />
+    <br />
+    <br />
+    <br />
+    <div class="jumbotron_for_forms"><h1>@text</h1></div>
+</form>

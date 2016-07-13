@@ -15,14 +15,14 @@ namespace HomeworkW5D2_New.Controllers
             return View();
         }
 
-        public ActionResult Artists()
+        public ActionResult PWHATI2()
         {
             ViewBag.Message = "an album db";
 
-            return View();
+            return View(DB.AlbumTables.ToList());
         }
 
-        public ActionResult Genres()
+        public ActionResult forms()
         {
             ViewBag.Message = "Contact me at anemail@emailaddresses.com";
 
