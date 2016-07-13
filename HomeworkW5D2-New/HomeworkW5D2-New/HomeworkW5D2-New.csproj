@@ -230,7 +230,7 @@
     <Content Include="Views\GenreTables\Index.cshtml" />
     <Content Include="Views\Home\Artists.cshtml" />
     <Content Include="Views\Home\Genres.cshtml" />
-    <Content Include="Views\Home\Albums.cshtml" />
+    <Content Include="Views\Home\PageWhatHasAllTheInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

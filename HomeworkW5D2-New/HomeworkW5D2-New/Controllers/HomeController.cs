@@ -8,6 +8,8 @@ namespace HomeworkW5D2_New.Controllers
 {
     public class HomeController : Controller
     {
+        AlbumHomeworkDBEntities DB = new AlbumHomeworkDBEntities();
+
         public ActionResult Index()
         {
             return View();
@@ -32,6 +34,13 @@ namespace HomeworkW5D2_New.Controllers
             ViewBag.Message = "the real good stufff is here!!!";
 
             return View();
+        }
+
+        public ActionResult PageWhatHasAllTheInfo()
+        {
+            ViewBag.Message = "the real good stufff is here!!!";
+            //var artistsvar = DB.ArtistTables.ToList();
+            return View(DB.ArtistTables.ToList());
         }
     }
 }
