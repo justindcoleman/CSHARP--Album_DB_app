@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AlbumHomeworkDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AlbumTable">
+          <Key>
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="AlbumID" Type="int" Nullable="false" />
+          <Property Name="AlbumName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArtistID" Type="int" Nullable="false" />
+          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="ArtistTable">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="int" Nullable="false" />
+          <Property Name="ArtistName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GenreTable">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="GenreName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Album_Artist1">
+          <End Role="ArtistTable" Type="Self.ArtistTable" Multiplicity="1" />
+          <End Role="AlbumTable" Type="Self.AlbumTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArtistTable">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="AlbumTable">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Album_Genre1">
+          <End Role="GenreTable" Type="Self.GenreTable" Multiplicity="1" />
+          <End Role="AlbumTable" Type="Self.AlbumTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenreTable">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="AlbumTable">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlbumHomeworkDBModelStoreContainer">
+          <EntitySet Name="AlbumTable" EntityType="Self.AlbumTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArtistTable" EntityType="Self.ArtistTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenreTable" EntityType="Self.GenreTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Album_Artist1" Association="Self.FK_Album_Artist1">
+            <End Role="ArtistTable" EntitySet="ArtistTable" />
+            <End Role="AlbumTable" EntitySet="AlbumTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_Genre1" Association="Self.FK_Album_Genre1">
+            <End Role="GenreTable" EntitySet="GenreTable" />
+            <End Role="AlbumTable" EntitySet="AlbumTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlbumHomeworkDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AlbumTable">
+          <Key>
+            <PropertyRef Name="AlbumID" />
+          </Key>
+          <Property Name="AlbumID" Type="Int32" Nullable="false" />
+          <Property Name="AlbumName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ArtistID" Type="Int32" Nullable="false" />
+          <Property Name="GenreID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ArtistTable" Relationship="Self.FK_Album_Artist1" FromRole="AlbumTable" ToRole="ArtistTable" />
+          <NavigationProperty Name="GenreTable" Relationship="Self.FK_Album_Genre1" FromRole="AlbumTable" ToRole="GenreTable" />
+        </EntityType>
+        <EntityType Name="ArtistTable">
+          <Key>
+            <PropertyRef Name="ArtistID" />
+          </Key>
+          <Property Name="ArtistID" Type="Int32" Nullable="false" />
+          <Property Name="ArtistName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AlbumTables" Relationship="Self.FK_Album_Artist1" FromRole="ArtistTable" ToRole="AlbumTable" />
+        </EntityType>
+        <EntityType Name="GenreTable">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="Int32" Nullable="false" />
+          <Property Name="GenreName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AlbumTables" Relationship="Self.FK_Album_Genre1" FromRole="GenreTable" ToRole="AlbumTable" />
+        </EntityType>
+        <Association Name="FK_Album_Artist1">
+          <End Role="ArtistTable" Type="Self.ArtistTable" Multiplicity="1" />
+          <End Role="AlbumTable" Type="Self.AlbumTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArtistTable">
+              <PropertyRef Name="ArtistID" />
+            </Principal>
+            <Dependent Role="AlbumTable">
+              <PropertyRef Name="ArtistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Album_Genre1">
+          <End Role="GenreTable" Type="Self.GenreTable" Multiplicity="1" />
+          <End Role="AlbumTable" Type="Self.AlbumTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenreTable">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="AlbumTable">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlbumHomeworkDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AlbumTables" EntityType="Self.AlbumTable" />
+          <EntitySet Name="ArtistTables" EntityType="Self.ArtistTable" />
+          <EntitySet Name="GenreTables" EntityType="Self.GenreTable" />
+          <AssociationSet Name="FK_Album_Artist1" Association="Self.FK_Album_Artist1">
+            <End Role="ArtistTable" EntitySet="ArtistTables" />
+            <End Role="AlbumTable" EntitySet="AlbumTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_Genre1" Association="Self.FK_Album_Genre1">
+            <End Role="GenreTable" EntitySet="GenreTables" />
+            <End Role="AlbumTable" EntitySet="AlbumTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlbumHomeworkDBModelStoreContainer" CdmEntityContainer="AlbumHomeworkDBEntities">
+          <EntitySetMapping Name="AlbumTables">
+            <EntityTypeMapping TypeName="AlbumHomeworkDBModel.AlbumTable">
+              <MappingFragment StoreEntitySet="AlbumTable">
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="AlbumName" ColumnName="AlbumName" />
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArtistTables">
+            <EntityTypeMapping TypeName="AlbumHomeworkDBModel.ArtistTable">
+              <MappingFragment StoreEntitySet="ArtistTable">
+                <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+                <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenreTables">
+            <EntityTypeMapping TypeName="AlbumHomeworkDBModel.GenreTable">
+              <MappingFragment StoreEntitySet="GenreTable">
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="GenreName" ColumnName="GenreName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
